@@ -18,7 +18,7 @@ class AddTagsListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FormEvents::SUBMIT => 'onPreSetData',
+            FormEvents::SUBMIT => 'onSubmit',
         );
     }
 

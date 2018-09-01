@@ -29,7 +29,7 @@ class User implements UserInterface
      * @var string
      * @ORM\Column(type="string")
      */
-    private $apiKey;
+    private $apiKey = "";
 
     /**
      * @return string
