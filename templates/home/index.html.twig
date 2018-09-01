@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Liste des Livres</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>CoverPicture</th>
+                <th>Isbn</th>
+                <th>CreationDate</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.coverPicture }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.creationDate ? book.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ book.tags ? book.tags|join(', ') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1>Liste des Auteurs</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Nationality</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for author in authors %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td>{{ author.firstname }}</td>
+                <td>{{ author.lastname }}</td>
+                <td>{{ author.nationality }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="container-fluid align-items-center">
+            <a role="button" class="btn btn-primary" href="/author">Liste des auteurs</a>
+            <a role="button" class="btn btn-primary" href="/book">Liste des livres</a>
+        <a role="button" class="btn btn-primary" href="/user">Liste des utilisateurs</a>
+    </div>
+
+
+    <div class="alert alert-info" role="alert">
+    <p>Credentials for authentication: </p>
+    <pre>
+        Username: arnaud
+        password: dunforce
+    </pre>
+</div>
+
+<div class="alert alert-info" role="alert">
+    Try: <a href="http://37.59.17.29:8000/api?maxDate=2028-09-2&apikey=dunforce">The API</a>
+</div>
+{% endblock %}
